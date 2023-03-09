@@ -2,6 +2,10 @@
 
 This action enables SSH access to a remote secured host via a WireGuard tunnel. The action is intended to be used with self-hosted runners on GitHub Actions.
 
+## Disclaimer
+
+This action is based on omahn/wireguard-ssh-github-action and appleboy/ssh-action. The original action from omahn is not maintained anymor and needs better UX. The original action from appleboy does not include wireguard support.
+
 ## Description
 
 This action will create a WireGuard tunnel to a remote host, and then use that tunnel to create an SSH connection to the remote host. The SSH connection will be forwarded to the local machine, and the action will wait for the connection to be closed before terminating.
@@ -9,7 +13,7 @@ This action will create a WireGuard tunnel to a remote host, and then use that t
 ## Usage
 
 ```yaml
-- uses: omahn/wireguard-ssh-github-action@v1.4
+- uses: niwee-productions/actions-ssh-wireguard@0.1
   with:
     # Required: The SSH user to connect as.
     user: ""
@@ -24,4 +28,3 @@ This action will create a WireGuard tunnel to a remote host, and then use that t
     # Required: The script to run on the remote host after the tunnel is established.
     script: ""
 ```
-# ACTIONS-SSH-WIREGUARD
