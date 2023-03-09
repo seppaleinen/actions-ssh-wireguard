@@ -24,3 +24,4 @@ This action will create a WireGuard tunnel to a remote host, and then use that t
     # Required: The script to run on the remote host after the tunnel is established.
     script: ""
 ```
+# ACTIONS-SSH-WIREGUARD
