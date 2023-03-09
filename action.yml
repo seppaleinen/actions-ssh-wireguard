@@ -1,0 +1,36 @@
+name: "SSH over WireGuard"
+description: "SSH to your private servers over WireGuard VPN."
+branding:
+  icon: "lock"
+  color: "purple"
+inputs:
+  user:
+    description: "The user to connect as"
+    required: true
+  port:
+    description: "The port to connect to"
+    required: true
+  host:
+    description: "The host to connect to"
+    required: true
+  key:
+    description: "The private key to use for authentication"
+    required: true
+  conf:
+    description: "The Wireguard configuration file"
+    required: true
+  script:
+    description: "The script to run"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/runner.sh
+      shell: bash
+      env:
+        SSH_USER: ${{ inputs.peer_port }}
+        SSH_PORT: ${{ inputs.peer_ip }}
+        SSH_HOST: ${{ inputs.github_ip }}
+        SSH_KEY: ${{ inputs.ssh_public_key }}
+        SSH_CONF: ${{ inputs.ssh_connection_timeout }}
+        SSH_SCRIPT: ${{ inputs.ssh_script }}
