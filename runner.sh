@@ -21,7 +21,7 @@ sudo apt-get install -y wireguard openssh-client
 
 echo "Configuring WireGuard..."
 # Create wireguard config
-echo "$WIREGUARD_CONFIG" > /etc/wireguard/wg0.conf
+echo "$WIREGUARD_CONFIG" | sudo tee /etc/wireguard/wg0.conf
 
 echo "Starting WireGuard..."
 # Start wireguard
