@@ -17,7 +17,7 @@ WIREGUARD_CONFIG=${WIREGUARD_CONFIG}
 echo "Installing WireGuard and SSH..."
 # Install wireguard
 sudo apt-get update -y
-sudo apt-get install -y wireguard openssh-client
+sudo apt-get install -y wireguard openssh-client resolvconf
 
 echo "Configuring WireGuard..."
 # Create wireguard config
