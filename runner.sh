@@ -22,10 +22,11 @@ sudo apt-get install -y wireguard openssh-client resolvconf
 echo "Configuring WireGuard..."
 # Create wireguard config
 echo "$WIREGUARD_CONFIG" | sudo tee /etc/wireguard/wg0.conf
+echo "$SSH_KEY" > /ssh.pub
 
 echo "Starting WireGuard..."
 # Start wireguard
 wg-quick up wg0
 
 echo "Running SSH script..."
-ssh -o StrictHostKeyChecking=no -i "$SSH_KEY" -p "$SSH_PORT" "$SSH_USER"@"$SSH_HOST" "$SSH_SCRIPT"
+ssh -o StrictHostKeyChecking=no -i /ssh.pub -p "$SSH_PORT" "$SSH_USER"@"$SSH_HOST" "$SSH_SCRIPT"
