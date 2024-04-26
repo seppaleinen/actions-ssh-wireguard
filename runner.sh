@@ -1,18 +1,14 @@
 #!/bin/bash
 
+set -e
 echo "=== WireGuard/SSH GitHub Action ==="
 
 SSH_USER=${SSH_USER:-root}
 SSH_PORT=${SSH_PORT:-22}
-SSH_HOST=${SSH_HOST}
-SSH_KEY=${SSH_KEY}
-SSH_SCRIPT=${SSH_SCRIPT}
-WIREGUARD_CONFIG=${WIREGUARD_CONFIG}
-
-[ -z $SSH_HOST ] && echo "Missing SSH_HOST argument"
-[ -z $SSH_KEY ] && echo "Missing SSH_KEY argument"
-[ -z $SSH_SCRIPT ] && echo "Missing SSH_SCRIPT argument"
-[ -z $WIREGUARD_CONFIG ] && echo "Missing WIREGUARD_CONFIG argument"
+SSH_HOST=${SSH_HOST:?"Missing SSH_HOST argument"}
+SSH_KEY=${SSH_KEY:?"Missing SSH_KEY argument"}
+SSH_SCRIPT=${SSH_SCRIPT:?"Missing SSH_SCRIPT argument"}
+WIREGUARD_CONFIG=${WIREGUARD_CONFIG:?"Missing WIREGUARD_CONFIG argument"}
 
 echo "Installing WireGuard and SSH..."
 # Install wireguard
