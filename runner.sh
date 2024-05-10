@@ -17,9 +17,8 @@ sudo apt-get install -y wireguard openssh-client resolvconf
 
 echo "Configuring WireGuard..."
 # Create wireguard config
-echo "$WIREGUARD_CONFIG" > /etc/wireguard/wg0.conf
-echo "$SSH_KEY" > /ssh.pub
-
+sudo sh -c "echo \"$WIREGUARD_CONFIG\" > /etc/wireguard/wg0.conf"
+sudo sh -c "echo \"$SSH_KEY\" > /ssh.pub"
 echo "Starting WireGuard..."
 # Start wireguard
 wg-quick up wg0
