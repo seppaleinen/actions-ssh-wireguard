@@ -24,6 +24,8 @@ echo "$SSH_KEY" | sudo tee /home/runner/.ssh/ssh.pub
 sudo chmod 600 /etc/wireguard/wg0.conf
 sudo chmod 644 /home/runner/.ssh/ssh.pub
 
+modprobe wireguard && echo module wireguard +p > /sys/kernel/debug/dynamic_debug/control
+
 echo "Starting WireGuard..."
 # Start wireguard
 sudo wg-quick up wg0
