@@ -13,7 +13,7 @@ WIREGUARD_CONFIG=${WIREGUARD_CONFIG:?"Missing WIREGUARD_CONFIG argument"}
 echo "Installing WireGuard and SSH..."
 # Install wireguard
 sudo apt-get update -y
-sudo apt-get install -y wireguard wireguard-tools openssh-client resolvconf openresolv
+sudo apt-get install -y wireguard wireguard-tools openssh-client resolvconf
 
 echo "Configuring WireGuard..."
 # Create wireguard config
