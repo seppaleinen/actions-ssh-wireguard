@@ -17,18 +17,15 @@ sudo apt-get install -y wireguard wireguard-tools openssh-client resolvconf
 
 echo "Configuring WireGuard..."
 # Create wireguard config
-echo "$WIREGUARD_CONFIG" | sudo tee /etc/wireguard/wg0.conf
-mkdir /home/runner/.ssh
-echo "$SSH_KEY" | sudo tee /home/runner/.ssh/ssh.pub
+echo "$WIREGUARD_CONFIG" > ./wg0.conf
+echo "$SSH_KEY" > ./ssh.pub
 
-sudo chmod 600 /etc/wireguard/wg0.conf
-sudo chmod 644 /home/runner/.ssh/ssh.pub
-
-modprobe wireguard && echo module wireguard +p > /sys/kernel/debug/dynamic_debug/control
+sudo chmod 600 ./wg0.conf
+sudo chmod 644 ./ssh.pub
 
 echo "Starting WireGuard..."
 # Start wireguard
-sudo wg-quick up wg0
+sudo wg-quick up ./wg0.conf
 
 echo "Running SSH script..."
-ssh -o ConnectTimeout=30 -o BatchMode=yes -o StrictHostKeyChecking=accept-new -i /home/runner/.ssh/ssh.pub -p "$SSH_PORT" "$SSH_USER"@"$SSH_HOST" "$SSH_SCRIPT"
+ssh -o ConnectTimeout=30 -o BatchMode=yes -o StrictHostKeyChecking=accept-new -i ./ssh.pub -p "$SSH_PORT" "$SSH_USER"@"$SSH_HOST" "$SSH_SCRIPT"

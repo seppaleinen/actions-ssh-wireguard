@@ -10,10 +10,14 @@ This action is based on omahn/wireguard-ssh-github-action and appleboy/ssh-actio
 
 This action will create a WireGuard tunnel to a remote host, and then use that tunnel to create an SSH connection to the remote host. The SSH connection will be forwarded to the local machine, and the action will wait for the connection to be closed before terminating.
 
+## Caveats
+
+Doesn't seem to work on ubuntu versions newer than 20.04.
+
 ## Usage
 
 ```yaml
-- uses: niwee-productions/actions-ssh-wireguard@beta
+- uses: seppaleinen/actions-ssh-wireguard@0.9-dev
   with:
     # Required: The SSH user to connect as.
     user: ""
