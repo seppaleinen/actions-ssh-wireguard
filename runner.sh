@@ -13,7 +13,7 @@ WIREGUARD_CONFIG=${WIREGUARD_CONFIG:?"Missing WIREGUARD_CONFIG argument"}
 echo "Installing WireGuard and SSH..."
 # Install wireguard
 sudo apt-get update -y
-sudo apt-get install -y wireguard openssh-client resolvconf
+sudo apt-get install -y wireguard wireguard-tools openssh-client resolvconf
 
 echo "Configuring WireGuard..."
 # Create wireguard config
@@ -22,7 +22,7 @@ echo "$SSH_KEY" > ./ssh.pub
 
 echo "Starting WireGuard..."
 # Start wireguard
-wg-quick up ./wg0.conf
+sudo wg-quick up ./wg0.conf
 
 echo "Running SSH script..."
 ssh -o ConnectTimeout=30 -o BatchMode=yes -o StrictHostKeyChecking=accept-new -i ./ssh.pub -p "$SSH_PORT" "$SSH_USER"@"$SSH_HOST" "$SSH_SCRIPT"
