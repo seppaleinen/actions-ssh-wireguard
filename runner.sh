@@ -20,8 +20,7 @@ echo "Configuring WireGuard..."
 echo "$WIREGUARD_CONFIG" > ./wg0.conf
 echo "$SSH_KEY" > ./ssh.pub
 
-sudo chmod 600 ./wg0.conf
-sudo chmod 644 ./ssh.pub
+sudo chmod 600 ./wg0.conf ./ssh.pub
 
 echo "Starting WireGuard..."
 # Start wireguard
